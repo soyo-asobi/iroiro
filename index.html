@@ -17,11 +17,14 @@
   <h1>そよ風チャット 🍃</h1>
   <div id="chat"></div>
   <input type="text" id="input" placeholder="話しかけてみて…" />
-  <button onclick="send()">送信</button>
+  <button id="sendBtn">送信</button>
 
   <script>
     const chat = document.getElementById('chat');
     const input = document.getElementById('input');
+    const sendBtn = document.getElementById('sendBtn');
+
+    sendBtn.addEventListener('click', send);
 
     function send() {
       const text = input.value.trim();
@@ -44,3 +47,14 @@
       if (text.includes('こんにちは')) {
         reply = 'こんにちは！森の風が気持ちいいね。';
       } else if (text.includes('元気')) {
+        reply = 'もちろん！雨上がりの苔みたいに元気だよ。';
+      } else if (text.includes('さようなら')) {
+        reply = 'またね。風が運んでくれる日まで！';
+      } else {
+        reply = 'ふむふむ…それ、もう少し詳しく教えて？';
+      }
+      setTimeout(() => appendMessage('そよ風Bot', reply, 'bot'), 500);
+    }
+  </script>
+</body>
+</html>
